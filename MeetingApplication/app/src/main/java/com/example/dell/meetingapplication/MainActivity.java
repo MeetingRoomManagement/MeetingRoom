@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private HomeFragment homeFragment;
     private DashboardFragment dashboardFragment;
+    private NotificationsFragment notificationsFragment;
     FragmentManager fm;
     FragmentTransaction ft;
 
@@ -45,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
 //                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
+                    if (notificationsFragment.isAdded()) {
+                        ft.show( notificationsFragment);
+                    } else {
+                        ft.replace(R.id.frame_layout, notificationsFragment);
+                    }
+                    ft.commitAllowingStateLoss();
 //                    mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
@@ -62,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         homeFragment = HomeFragment.newInstance();
         dashboardFragment = DashboardFragment.newInstance();
+        notificationsFragment = NotificationsFragment.newInstance();
         fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
         ft.replace(R.id.frame_layout, homeFragment);

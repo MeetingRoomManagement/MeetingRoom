@@ -5,6 +5,28 @@
     tools:context="com.example.dell.meetingapplication.DashboardFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:iconifiedByDefault="false"
+        android:queryHint="请输入搜索内容">
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="264"
+            android:background="@null"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="输入查询的关键字"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+    </SearchView>
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

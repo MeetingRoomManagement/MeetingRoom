@@ -7,4 +7,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="first_fragment">第一个fragment</string>
     <string name="second_fragment">第二个fragment</string>
+    <string name="third_fragment">第三个fragment</string>
 </resources>
