@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MeetingApplication</string>
+    <string name="app_name">Scan</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -8,4 +8,8 @@
     <string name="first_fragment">第一个fragment</string>
     <string name="second_fragment">第二个fragment</string>
     <string name="third_fragment">第三个fragment</string>
+
+    <string name="btn_all">上传照片</string>
+    <string name="btn_take_photos">拍照</string>
+    <string name="btn_photo_album">从相册中选择</string>
 </resources>
