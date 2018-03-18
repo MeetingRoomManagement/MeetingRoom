@@ -4,7 +4,12 @@ package com.example.dell.meetingapplication;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,9 +65,53 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View mainView = inflater.inflate(R.layout.fragment_home, container, false);
+        View contentView = View.inflate(getContext(), R.layout.dialog_choose, null);
+        creatDialog(mainView,contentView);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return mainView;
     }
+
+    public void creatDialog(View mainView,View contentView){
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+        View.OnClickListener clickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.btn_take_photos:
+//                        openCamera();
+                        break;
+                    case R.id.btn_photo_album:
+//                        openPicture();
+                        break;
+                    case R.id.btn_cancel:
+                        bottomSheetDialog.dismiss();
+                        break;
+                    case R.id.btn_all:
+                        bottomSheetDialog.show();
+                        break;
+                }
+            }
+        };
+
+
+        bottomSheetDialog.setContentView(contentView);
+        View parent = (View) contentView.getParent();
+        BottomSheetBehavior behavior = BottomSheetBehavior.from(parent);
+        contentView.measure(0, 0);
+        behavior.setPeekHeight(contentView.getMeasuredHeight());
+        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) parent.getLayoutParams();
+        params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
+        parent.setLayoutParams(params);
+
+        mainView.findViewById(R.id.btn_all).setOnClickListener(clickListener);
+        contentView.findViewById(R.id.btn_take_photos).setOnClickListener(clickListener);
+        contentView.findViewById(R.id.btn_photo_album).setOnClickListener(clickListener);
+        contentView.findViewById(R.id.btn_cancel).setOnClickListener(clickListener);
+    }
+
 
 
 }
